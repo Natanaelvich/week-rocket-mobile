@@ -6,6 +6,8 @@ import SignIn from './pages/SignIn';
 export default createAppContainer(
   createSwitchNavigator({
     SignIn,
-    Home,
+    Home: {
+      screen: Home,
+    },
   })
 );

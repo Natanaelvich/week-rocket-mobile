@@ -12,7 +12,7 @@ export default function SignIn() {
   const [password, setPassword] = useState('');
 
   function handleSubmit() {
-    dispatch(signInRequest(email, password));
+    dispatch(signInRequest('joana@gmail.com', 'joanajoana'));
   }
 
   return (

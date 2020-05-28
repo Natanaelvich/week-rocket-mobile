@@ -2,16 +2,17 @@ import { call, put, all, takeLatest, select } from 'redux-saga/effects';
 import { AsyncStorage } from 'react-native';
 import { signInSuccess, signUpSuccess, getPermissionsSuccess } from './actions';
 import api from '~/services/api';
+import NavigationService from '~/services/navigation';
 
 function* signIn({ payload }) {
   try {
+    NavigationService.navigate('Home');
     const response = yield call(api.post, 'sessions', {
       email: payload.email,
       password: payload.password,
     });
 
     yield call([AsyncStorage, 'setItem'], '@week:token', response.data);
-
     yield put(signInSuccess(response.data.token));
   } catch (error) {}
 }
