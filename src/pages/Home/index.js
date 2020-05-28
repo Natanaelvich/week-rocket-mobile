@@ -12,6 +12,7 @@ import {
 } from './styles';
 import TeamSwitcher from '~/components/TeamSwitcher';
 import { getTeamsRequest } from '~/store/modules/teams/actions';
+import Projects from '~/components/Projects';
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -54,6 +55,8 @@ export default function Home() {
               <Icon size={26} color="#fff" name="group" />
             </Button>
           </Header>
+
+          <Projects />
         </Container>
       </Sidemenu>
     </BackgrounWrapper>
