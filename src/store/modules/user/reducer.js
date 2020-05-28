@@ -1,4 +1,5 @@
 import produce from 'immer';
+import { AsyncStorage } from 'react-native';
 
 const initialState = {
   authCheckd: false,
@@ -30,6 +31,7 @@ export default (state = initialState, { type, token, rolesPermissions }) => {
       });
 
     case '@user/SIGN_OUT_REQUEST':
+      AsyncStorage.clear();
       return produce(state, draft => {
         draft.signedIn = false;
         draft.token = null;

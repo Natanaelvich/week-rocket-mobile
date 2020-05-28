@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 
+import { useDispatch } from 'react-redux';
 import { Container, Input, Button, ButtonText } from './styles';
 import { Title } from '~/components/Header/styles';
+import { signInRequest } from '~/store/modules/user/actions';
 
 export default function SignIn() {
-  const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
+  const dispatch = useDispatch();
 
-  function handleSubmit() {}
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  function handleSubmit() {
+    dispatch(signInRequest(email, password));
+  }
 
   return (
     <Container>
@@ -21,16 +27,15 @@ export default function SignIn() {
         autoCorrect={false}
       />
       <Input
-        value={name}
-        onChangeText={text => setName(text)}
+        value={password}
+        onChangeText={text => setPassword(text)}
         placeholder="Senha"
         secureTextEntry
         autoCapitalize="none"
         autoCorrect={false}
         returnKeyType="send"
-        onSubmitEditing={handleSubmit}
       />
-      <Button>
+      <Button onPress={handleSubmit}>
         <ButtonText>Entrar</ButtonText>
       </Button>
     </Container>
