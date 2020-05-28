@@ -1,4 +1,5 @@
 import { call, put, all, takeLatest } from 'redux-saga/effects';
+import { AsyncStorage } from 'react-native';
 import { getTeamsSuccess, createTeamSuccess, closeTeamModal } from './actions';
 import api from '~/services/api';
 
@@ -23,7 +24,12 @@ function* createTeam({ nameTeam }) {
   } catch (error) {}
 }
 
+function* setTeam({ team }) {
+  yield call([AsyncStorage, 'setItem'], '@week:team', JSON.stringify(team));
+}
+
 export default all([
   takeLatest('@teams/GET_TEAMS_REQUEST', getTeams),
   takeLatest('@teams/CREATE_TEAM_REQUEST', createTeam),
+  takeLatest('@teams/SELECT_TEAM', setTeam),
 ]);

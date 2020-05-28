@@ -25,3 +25,4 @@ export const TeamTitle = styled.Text`
   color: #fff;
   font-weight: bold;
 `;
+export const Content = styled.View``;

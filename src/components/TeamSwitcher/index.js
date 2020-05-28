@@ -1,7 +1,7 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   Container,
   TeamList,
@@ -9,8 +9,11 @@ import {
   ItemAvatar,
   NewTeam,
 } from './styles';
+import { selectTeam } from '~/store/modules/teams/actions';
 
 const TeamSwitcher = () => {
+  const dispatch = useDispatch();
+
   const teams = useSelector(state => state.teams.data);
 
   return (
@@ -19,7 +22,7 @@ const TeamSwitcher = () => {
         data={teams}
         keyExtractor={item => String(item.id)}
         renderItem={({ item }) => (
-          <TeamListItem>
+          <TeamListItem onPress={() => dispatch(selectTeam(item))}>
             <ItemAvatar
               source={{
                 uri: `https://ui-avatars.com/api/?font-size=0.33&background=4C3C82&color=fff&name=${item.name}`,

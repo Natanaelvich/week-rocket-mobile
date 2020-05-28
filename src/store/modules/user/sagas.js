@@ -8,14 +8,21 @@ import {
 } from './actions';
 import api from '~/services/api';
 import NavigationService from '~/services/navigation';
+import { selectTeam } from '../teams/actions';
 
 export function* initCheck() {
   try {
     const token = yield call([AsyncStorage, 'getItem'], '@week:token');
+    const team = yield call([AsyncStorage, 'getItem'], '@week:team');
 
     if (token) {
       yield put(signInSuccess(token));
     }
+
+    if (team) {
+      yield put(selectTeam(JSON.parse(team)));
+    }
+
     yield put(initCheckSuccess());
   } catch (error) {}
 }

@@ -48,7 +48,7 @@ export default function Home() {
               <Icon size={26} color="#fff" name="menu" />
             </Button>
             <TeamTitle>
-              {activeTeam ? activeTeam.title : 'Selecione um time'}
+              {activeTeam ? activeTeam.name : 'Selecione um time'}
             </TeamTitle>
             <Button>
               <Icon size={26} color="#fff" name="group" />
