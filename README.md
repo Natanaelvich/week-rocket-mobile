@@ -1,2 +1,1 @@
-# template-react-native
-My template React native :rocket:
+# project in react native for manage teams in projects :rocket: :fire:
