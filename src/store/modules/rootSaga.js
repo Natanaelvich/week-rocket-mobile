@@ -1,11 +1,11 @@
 import { all } from 'redux-saga/effects';
 
-import user from './user/sagas';
+import user, { initCheck } from './user/sagas';
 import teams from './teams/sagas';
 import projects from './projects/sagas';
 import members from './members/sagas';
 import invites from './invites/sagas';
 
 export default function* rootSaga() {
-  return yield all([user, teams, projects, members, invites]);
+  return yield all([initCheck(), user, teams, projects, members, invites]);
 }

@@ -30,6 +30,11 @@ export default (state = initialState, { type, token, rolesPermissions }) => {
         draft.roles = roles;
       });
 
+    case '@user/INIT_CHECK_SUCCESS':
+      return produce(state, draft => {
+        draft.authCheckd = true;
+      });
+
     case '@user/SIGN_OUT_REQUEST':
       AsyncStorage.clear();
       return produce(state, draft => {

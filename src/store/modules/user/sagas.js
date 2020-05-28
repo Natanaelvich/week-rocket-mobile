@@ -1,8 +1,24 @@
 import { call, put, all, takeLatest, select } from 'redux-saga/effects';
 import { AsyncStorage } from 'react-native';
-import { signInSuccess, signUpSuccess, getPermissionsSuccess } from './actions';
+import {
+  signInSuccess,
+  signUpSuccess,
+  getPermissionsSuccess,
+  initCheckSuccess,
+} from './actions';
 import api from '~/services/api';
 import NavigationService from '~/services/navigation';
+
+export function* initCheck() {
+  try {
+    const token = yield call([AsyncStorage, 'getItem'], '@week:token');
+
+    if (token) {
+      yield put(signInSuccess(token));
+    }
+    yield put(initCheckSuccess());
+  } catch (error) {}
+}
 
 function* signIn({ payload }) {
   try {
@@ -12,7 +28,7 @@ function* signIn({ payload }) {
       password: payload.password,
     });
 
-    yield call([AsyncStorage, 'setItem'], '@week:token', response.data);
+    yield call([AsyncStorage, 'setItem'], '@week:token', response.data.token);
     yield put(signInSuccess(response.data.token));
   } catch (error) {}
 }

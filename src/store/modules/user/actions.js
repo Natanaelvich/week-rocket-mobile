@@ -27,6 +27,10 @@ export const getPermissionsSuccess = (roles, permissions) => ({
   rolesPermissions: { roles, permissions },
 });
 
+export const initCheckSuccess = () => ({
+  type: '@user/INIT_CHECK_SUCCESS',
+});
+
 export const signOutRequest = () => ({
   type: '@user/SIGN_OUT_REQUEST',
 });
