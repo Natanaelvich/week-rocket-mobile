@@ -7,7 +7,9 @@ function* getTeams() {
     const response = yield call(api.get, 'teams');
 
     yield put(getTeamsSuccess(response.data));
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function* createTeam({ nameTeam }) {

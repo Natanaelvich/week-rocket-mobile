@@ -4,7 +4,10 @@ export const BackgrounWrapper = styled.View`
   background: #795fcf;
   flex: 1;
 `;
-export const Container = styled.View``;
+export const Container = styled.View`
+  background: #795fcf;
+  flex: 1;
+`;
 export const Header = styled.View`
   flex-direction: row;
   justify-content: space-between;

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 
 import { useDispatch } from 'react-redux';
-import { Container, Input, Button, ButtonText } from './styles';
-import { Title } from '~/components/Header/styles';
+import { Container, Input, Button, ButtonText, Title } from './styles';
 import { signInRequest } from '~/store/modules/user/actions';
 
 export default function SignIn() {
