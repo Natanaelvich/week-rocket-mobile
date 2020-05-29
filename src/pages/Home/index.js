@@ -13,6 +13,7 @@ import {
 import TeamSwitcher from '~/components/TeamSwitcher';
 import { getTeamsRequest } from '~/store/modules/teams/actions';
 import Projects from '~/components/Projects';
+import Members from '~/components/Members';
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -43,21 +44,30 @@ export default function Home() {
         openMenuOffset={70}
         menu={<TeamSwitcher />}
       >
-        <Container>
-          <Header>
-            <Button onPress={() => toggleMenu('left', true)}>
-              <Icon size={26} color="#fff" name="menu" />
-            </Button>
-            <TeamTitle>
-              {activeTeam ? activeTeam.name : 'Selecione um time'}
-            </TeamTitle>
-            <Button>
-              <Icon size={26} color="#fff" name="group" />
-            </Button>
-          </Header>
+        <Sidemenu
+          isOpen={rightOpen}
+          disableGestures
+          onChange={isOpen => toggleMenu('right', isOpen)}
+          openMenuOffset={285}
+          menuPosition="right"
+          menu={<Members />}
+        >
+          <Container>
+            <Header>
+              <Button onPress={() => toggleMenu('left', true)}>
+                <Icon size={26} color="#fff" name="menu" />
+              </Button>
+              <TeamTitle>
+                {activeTeam ? activeTeam.name : 'Selecione um time'}
+              </TeamTitle>
+              <Button onPress={() => toggleMenu('right', true)}>
+                <Icon size={26} color="#fff" name="group" />
+              </Button>
+            </Header>
 
-          <Projects />
-        </Container>
+            <Projects />
+          </Container>
+        </Sidemenu>
       </Sidemenu>
     </BackgrounWrapper>
   );

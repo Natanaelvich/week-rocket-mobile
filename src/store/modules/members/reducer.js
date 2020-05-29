@@ -5,10 +5,7 @@ const initialState = {
   membersModalOpen: false,
 };
 
-export default (
-  state = initialState,
-  { type, members, member, update }
-) => {
+export default (state = initialState, { type, members, member, update }) => {
   switch (type) {
     case '@members/GET_MEMBERS_SUCCESS':
       return produce(state, draft => {
