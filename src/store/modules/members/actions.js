@@ -26,11 +26,3 @@ export const createMemberSuccess = member => ({
   type: '@members/CREATE_MEMBER_SUCCESS',
   member,
 });
-
-export const openMembersModal = () => ({
-  type: '@teams/OPEN_MEMBERS_MODAL',
-});
-
-export const closeMembersModal = () => ({
-  type: '@teams/CLOSE_MEMBERS_MODAL',
-});

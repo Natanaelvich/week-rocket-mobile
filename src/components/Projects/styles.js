@@ -4,16 +4,14 @@ import { FlatList } from 'react-native';
 export const Container = styled.View`
   flex: 1;
 `;
-export const ProjectList = styled(FlatList)`
-  margin-top: 12px;
-`;
+export const ProjectList = styled(FlatList)``;
 export const ListItem = styled.View`
   background: rgba(0, 0, 0, 0.2);
   width: 60%;
   align-self: center;
   align-items: center;
   justify-content: center;
-  margin-bottom: 12px;
+  margin-top: 12px;
   border-radius: 12px;
   padding: 12px;
 `;
@@ -30,6 +28,6 @@ export const Button = styled.TouchableOpacity`
   justify-content: center;
   border-radius: 12px;
   padding: 12px;
-  margin-bottom: 12px;
+  margin: 12px 0;
   elevation: 2;
 `;

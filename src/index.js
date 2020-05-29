@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { StatusBar } from 'react-native';
 import App from './App';
 import store from './store';
+import './config/Reactotron';
 
 if (__DEV__) {
   require('react-devtools');

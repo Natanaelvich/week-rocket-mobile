@@ -1,6 +1,7 @@
 import { call, put, all, takeLatest } from 'redux-saga/effects';
 import { getProjectsSuccess, createProjectsSuccess } from './actions';
 import api from '~/services/api';
+import { closeNewProjectModal } from '../modals/actions';
 
 function* getProjects() {
   const response = yield call(api.get, 'projects');
@@ -15,6 +16,7 @@ function* createProjects({ titleProject }) {
     });
 
     yield put(createProjectsSuccess(response.data));
+    yield put(closeNewProjectModal());
   } catch (error) {}
 }
 

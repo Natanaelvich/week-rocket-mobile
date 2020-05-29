@@ -2,7 +2,6 @@ import produce from 'immer';
 
 const initialState = {
   data: [],
-  membersModalOpen: false,
 };
 
 export default (state = initialState, { type, members, member, update }) => {
@@ -24,16 +23,6 @@ export default (state = initialState, { type, members, member, update }) => {
             ? { ...memberUpdate, roles: update.roles }
             : memberUpdate
         );
-      });
-
-    case '@teams/OPEN_MEMBERS_MODAL':
-      return produce(state, draft => {
-        draft.membersModalOpen = true;
-      });
-
-    case '@teams/CLOSE_MEMBERS_MODAL':
-      return produce(state, draft => {
-        draft.membersModalOpen = false;
       });
 
     default:

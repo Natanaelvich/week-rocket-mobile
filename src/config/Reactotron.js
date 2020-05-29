@@ -5,7 +5,6 @@ import { NativeModules } from 'react-native';
 const { scriptURL } = NativeModules.SourceCode;
 const address = scriptURL.split('://')[1].split('/')[0];
 const hostname = address.split(':')[0];
-// const port = address.split(':')[1];
 
 const reactotron = Reactotron.configure({
   name: 'react-native',
@@ -16,4 +15,7 @@ const reactotron = Reactotron.configure({
   .use(reactotronRedux())
   .connect();
 console.tron = Reactotron.log;
+
+reactotron.clear();
+
 export { reactotron };

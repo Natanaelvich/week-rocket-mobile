@@ -13,6 +13,8 @@ import {
   ButtonSettings,
 } from './styles';
 import { getMembersRequest } from '~/store/modules/members/actions';
+import NewInvite from '../NewInvite';
+import { openNewInviteModal } from '~/store/modules/modals/actions';
 
 const Members = () => {
   const dispatch = useDispatch();
@@ -39,11 +41,12 @@ const Members = () => {
           </ListItem>
         )}
         ListFooterComponent={() => (
-          <Button>
+          <Button onPress={() => dispatch(openNewInviteModal())}>
             <ButtonText>CONVIDAR</ButtonText>
           </Button>
         )}
       />
+      <NewInvite />
     </Container>
   );
 };
