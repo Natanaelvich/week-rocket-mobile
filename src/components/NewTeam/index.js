@@ -14,6 +14,7 @@ const NewTeam = () => {
 
   function handleSubmit() {
     dispatch(createTeamRequest(nameTeam));
+    setNameTeam('');
   }
 
   return (

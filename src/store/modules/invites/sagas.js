@@ -1,6 +1,8 @@
 import { call, put, all, takeLatest } from 'redux-saga/effects';
+import { ToastActionsCreators } from 'react-native-redux-toast';
 import api from '~/services/api';
 import { inviteMembersSuccess } from './actions';
+import { closeNewInviteModal } from '../modals/actions';
 
 function* inviteMembers({ invite }) {
   try {
@@ -9,7 +11,13 @@ function* inviteMembers({ invite }) {
     });
 
     yield put(inviteMembersSuccess(invite));
-  } catch (error) {}
+    yield put(closeNewInviteModal());
+    yield put(ToastActionsCreators.displayInfo('convite enviado'));
+  } catch (error) {
+    yield put(
+      ToastActionsCreators.displayError('erro ao enviar convite enviado')
+    );
+  }
 }
 
 export default all([

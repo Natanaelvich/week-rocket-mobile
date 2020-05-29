@@ -4,9 +4,11 @@ const initialState = {
   newTeamModal: false,
   newProjectModal: false,
   newInviteModal: false,
+  roleUpdaterModal: false,
+  memberActive: null,
 };
 
-export default (state = initialState, { type, token, rolesPermissions }) => {
+export default (state = initialState, { type, member }) => {
   switch (type) {
     case '@user/OPEN_NEW_TEAM_MODAL':
       return produce(state, draft => {
@@ -35,6 +37,17 @@ export default (state = initialState, { type, token, rolesPermissions }) => {
     case '@user/CLOSE_INVITE_MODAL':
       return produce(state, draft => {
         draft.newInviteModal = false;
+      });
+
+    case '@user/OPEN_ROLE_UPDATER_MODAL':
+      return produce(state, draft => {
+        draft.roleUpdaterModal = true;
+        draft.memberActive = member;
+      });
+
+    case '@user/CLOSE_ROLE_UPDATER_MODAL':
+      return produce(state, draft => {
+        draft.roleUpdaterModal = false;
       });
 
     default:

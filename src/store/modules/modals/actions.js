@@ -21,3 +21,12 @@ export const openNewInviteModal = () => ({
 export const closeNewInviteModal = () => ({
   type: '@user/CLOSE_INVITE_MODAL',
 });
+
+export const openRoleUpdaterModal = member => ({
+  type: '@user/OPEN_ROLE_UPDATER_MODAL',
+  member,
+});
+
+export const closeRoleUpdaterModal = () => ({
+  type: '@user/CLOSE_ROLE_UPDATER_MODAL',
+});

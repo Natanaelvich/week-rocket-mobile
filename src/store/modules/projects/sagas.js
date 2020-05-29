@@ -1,12 +1,17 @@
 import { call, put, all, takeLatest } from 'redux-saga/effects';
+import { ToastActionsCreators } from 'react-native-redux-toast';
 import { getProjectsSuccess, createProjectsSuccess } from './actions';
 import api from '~/services/api';
 import { closeNewProjectModal } from '../modals/actions';
 
 function* getProjects() {
-  const response = yield call(api.get, 'projects');
+  try {
+    const response = yield call(api.get, 'projects');
 
-  yield put(getProjectsSuccess(response.data));
+    yield put(getProjectsSuccess(response.data));
+  } catch (error) {
+    yield put(ToastActionsCreators.displayWarning('erro ao buscar projetos'));
+  }
 }
 
 function* createProjects({ titleProject }) {
@@ -17,7 +22,13 @@ function* createProjects({ titleProject }) {
 
     yield put(createProjectsSuccess(response.data));
     yield put(closeNewProjectModal());
-  } catch (error) {}
+    yield put(ToastActionsCreators.displayInfo('novo projeto criado'));
+  } catch (error) {
+    yield put(closeNewProjectModal());
+    yield put(
+      ToastActionsCreators.displayWarning('erro ao criar novo projeto')
+    );
+  }
 }
 
 export default all([

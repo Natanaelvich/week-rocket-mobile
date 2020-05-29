@@ -14,12 +14,17 @@ import {
 } from './styles';
 import { getMembersRequest } from '~/store/modules/members/actions';
 import NewInvite from '../NewInvite';
-import { openNewInviteModal } from '~/store/modules/modals/actions';
+import {
+  openNewInviteModal,
+  openRoleUpdaterModal,
+} from '~/store/modules/modals/actions';
+import RoleUpdater from '../RoleUpdater';
 
 const Members = () => {
   const dispatch = useDispatch();
 
   const members = useSelector(state => state.members.data);
+  const memberActive = useSelector(state => state.modals.memberActive);
 
   useEffect(() => {
     dispatch(getMembersRequest());
@@ -35,7 +40,9 @@ const Members = () => {
           <ListItem>
             <ListItemTitle>{item.user.name}</ListItemTitle>
 
-            <ButtonSettings>
+            <ButtonSettings
+              onPress={() => dispatch(openRoleUpdaterModal(item))}
+            >
               <Icon name="settings" size={16} color="#fff" />
             </ButtonSettings>
           </ListItem>
@@ -47,6 +54,7 @@ const Members = () => {
         )}
       />
       <NewInvite />
+      {memberActive && <RoleUpdater />}
     </Container>
   );
 };
