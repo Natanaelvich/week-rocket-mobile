@@ -21,7 +21,7 @@ const TeamSwitcher = () => {
           >
             <ItemAvatar
               source={{
-                uri: `https://ui-avatars.com/api/?font-size=0.33&background=4C3C82&color=fff&name=${team.name}`,
+                uri: `https://ui-avatars.com/api/?font-size=0.33&background=4C3C88&color=fff&name=${team.name}`,
               }}
             />
           </TeamListItem>

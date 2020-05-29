@@ -4,22 +4,25 @@ import Modal from 'react-native-modal';
 import { useSelector, useDispatch } from 'react-redux';
 import { Buttom, Input, Text, Container } from './styles';
 import { closeNewTeamModal } from '~/store/modules/modals/actions';
+import { createTeamRequest } from '~/store/modules/teams/actions';
 
 const NewTeam = () => {
   const dispatch = useDispatch();
 
   const modalIsVisibility = useSelector(state => state.modals.newTeamModal);
-  const [newTem, setNewTeam] = useState('');
+  const [nameTeam, setNameTeam] = useState('');
 
-  function handleSubmit() {}
+  function handleSubmit() {
+    dispatch(createTeamRequest(nameTeam));
+  }
 
   return (
     <Modal isVisible={modalIsVisibility}>
       <Container>
         <Text>NOVO TIME</Text>
         <Input
-          value={newTem}
-          onChangeText={text => setNewTeam(text)}
+          value={nameTeam}
+          onChangeText={text => setNameTeam(text)}
           returnKeyType="send"
           onSubmitEditing={handleSubmit}
           placeholder="nome do time"

@@ -2,6 +2,7 @@ import { call, put, all, takeLatest } from 'redux-saga/effects';
 import { AsyncStorage } from 'react-native';
 import { getTeamsSuccess, createTeamSuccess, closeTeamModal } from './actions';
 import api from '~/services/api';
+import { closeNewTeamModal } from '../modals/actions';
 
 function* getTeams() {
   try {
@@ -20,7 +21,7 @@ function* createTeam({ nameTeam }) {
     });
 
     yield put(createTeamSuccess(response.data));
-    yield put(closeTeamModal());
+    yield put(closeNewTeamModal());
   } catch (error) {}
 }
 
