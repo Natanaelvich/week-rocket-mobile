@@ -31,4 +31,5 @@ export const Button = styled.TouchableOpacity`
   border-radius: 12px;
   padding: 12px;
   margin-bottom: 12px;
+  elevation: 2;
 `;

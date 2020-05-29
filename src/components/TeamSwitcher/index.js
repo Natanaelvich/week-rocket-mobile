@@ -2,8 +2,9 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { Container, TeamListItem, ItemAvatar, NewTeam } from './styles';
+import { Container, TeamListItem, ItemAvatar, NewTeamButton } from './styles';
 import { selectTeam } from '~/store/modules/teams/actions';
+import { openNewTeamModal } from '~/store/modules/modals/actions';
 
 const TeamSwitcher = () => {
   const dispatch = useDispatch();
@@ -26,9 +27,9 @@ const TeamSwitcher = () => {
           </TeamListItem>
         ))}
 
-      <NewTeam>
+      <NewTeamButton onPress={() => dispatch(openNewTeamModal())}>
         <Icon size={26} color="#fff" name="add" />
-      </NewTeam>
+      </NewTeamButton>
     </Container>
   );
 };

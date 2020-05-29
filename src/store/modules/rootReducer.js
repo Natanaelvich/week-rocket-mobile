@@ -5,6 +5,7 @@ import teams from './teams/reducer';
 import projects from './projects/reducer';
 import members from './members/reducer';
 import invites from './invites/reducer';
+import modals from './modals/reducer';
 
 export default combineReducers({
   user,
@@ -12,4 +13,5 @@ export default combineReducers({
   projects,
   members,
   invites,
+  modals,
 });

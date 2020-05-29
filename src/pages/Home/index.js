@@ -14,6 +14,7 @@ import TeamSwitcher from '~/components/TeamSwitcher';
 import { getTeamsRequest } from '~/store/modules/teams/actions';
 import Projects from '~/components/Projects';
 import Members from '~/components/Members';
+import NewTeam from '~/components/NewTeam';
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -69,6 +70,7 @@ export default function Home() {
           </Container>
         </Sidemenu>
       </Sidemenu>
+      <NewTeam visible onRequestClose={() => {}} />
     </BackgrounWrapper>
   );
 }

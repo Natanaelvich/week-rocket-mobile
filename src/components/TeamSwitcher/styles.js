@@ -2,7 +2,6 @@ import styled from 'styled-components/native';
 import { FlatList } from 'react-native';
 
 export const Container = styled.View`
-  background: #7159c1;
   flex: 1;
 `;
 export const TeamList = styled(FlatList)`
@@ -17,7 +16,7 @@ export const ItemAvatar = styled.Image`
   width: 48px;
   border-radius: 12px;
 `;
-export const NewTeam = styled.TouchableOpacity`
+export const NewTeamButton = styled.TouchableOpacity`
   background: #4c3c82;
   align-items: center;
   justify-content: center;
