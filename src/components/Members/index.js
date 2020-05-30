@@ -14,6 +14,7 @@ import {
 } from './styles';
 import { getMembersRequest } from '~/store/modules/members/actions';
 import NewInvite from '../NewInvite';
+import Can from '../Can';
 import {
   openNewInviteModal,
   openRoleUpdaterModal,
@@ -40,20 +41,27 @@ const Members = () => {
           <ListItem>
             <ListItemTitle>{item.user.name}</ListItemTitle>
 
-            <ButtonSettings
-              onPress={() => dispatch(openRoleUpdaterModal(item))}
-            >
-              <Icon name="settings" size={16} color="#fff" />
-            </ButtonSettings>
+            <Can checkRole="admnistrador">
+              <ButtonSettings
+                onPress={() => dispatch(openRoleUpdaterModal(item))}
+              >
+                <Icon name="settings" size={16} color="#fff" />
+              </ButtonSettings>
+            </Can>
           </ListItem>
         )}
         ListFooterComponent={() => (
-          <Button onPress={() => dispatch(openNewInviteModal())}>
-            <ButtonText>CONVIDAR</ButtonText>
-          </Button>
+          <Can checkPermission="invites_create">
+            <Button onPress={() => dispatch(openNewInviteModal())}>
+              <ButtonText>CONVIDAR</ButtonText>
+            </Button>
+          </Can>
         )}
       />
-      <NewInvite />
+
+      <Can checkPermission="invites_create">
+        <NewInvite />
+      </Can>
       {memberActive && <RoleUpdater />}
     </Container>
   );

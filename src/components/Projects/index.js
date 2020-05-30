@@ -12,6 +12,7 @@ import {
 import { getProjectsRequest } from '~/store/modules/projects/actions';
 import { openNewProjectModal } from '~/store/modules/modals/actions';
 import NewProject from '../NewProject';
+import Can from '../Can';
 
 const Projects = () => {
   const dispatch = useDispatch();
@@ -39,11 +40,12 @@ const Projects = () => {
         )}
       />
 
-      <Button onPress={() => dispatch(openNewProjectModal())}>
-        <Icon name="add" size={28} color="#fff" />
-      </Button>
-
-      <NewProject />
+      <Can checkPermission="projects_create">
+        <Button onPress={() => dispatch(openNewProjectModal())}>
+          <Icon name="add" size={28} color="#fff" />
+        </Button>
+        <NewProject />
+      </Can>
     </Container>
   );
 };
